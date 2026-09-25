@@ -1,157 +1,5 @@
 
-import { NavLink } from "react-router-dom";
-import {
-  FaShoppingCart,
-  FaHeart,
-  FaUser,
-  FaSearch,
-  FaBars,
-  FaTimes,
-  FaBoxOpen,
-} from "react-icons/fa";
-
-import { useContext, useState } from "react";
-
-import { CartContext } from "../../context/CartContext";
-import { WishlistContext } from "../../context/WishlistContext";
-import { ThemeContext } from "../../context/ThemeContext";
-
-import "./Navbar.css";
-
-function Navbar() {
-  const { cart } = useContext(CartContext);
-  const { wishlist } = useContext(WishlistContext);
-  const { darkMode, setDarkMode } = useContext(ThemeContext);
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const cartCount = cart.reduce(
-    (total, item) => total + Number(item.quantity || 0),
-    0
-  );
-
-  const wishlistCount = wishlist.length;
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
-
-  return (
-    <nav className="navbar-custom">
-
-      {/* Logo */}
-      <NavLink
-        to="/"
-        className="logo"
-        onClick={() => setMenuOpen(false)}
-      >
-        🛍 ShopSphere
-      </NavLink>
-
-      {/* Search */}
-      <div className="search-box">
-        <FaSearch />
-
-        <input
-          type="text"
-          placeholder="Search products..."
-        />
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className="menu-icon"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </div>
-
-      {/* Navigation */}
-      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-
-        <NavLink
-          to="/"
-          onClick={() => setMenuOpen(false)}
-        >
-          Home
-        </NavLink>
-
-        <NavLink
-          to="/products"
-          onClick={() => setMenuOpen(false)}
-        >
-          Products
-        </NavLink>
-
-        {/* Wishlist */}
-        <NavLink
-          to="/wishlist"
-          className="wishlist-icon"
-          onClick={() => setMenuOpen(false)}
-        >
-          <FaHeart />
-
-          {wishlistCount > 0 && (
-            <span className="badge">
-              {wishlistCount}
-            </span>
-          )}
-        </NavLink>
-
-        {/* Cart */}
-        <NavLink
-          to="/cart"
-          className="cart-icon"
-          onClick={() => setMenuOpen(false)}
-        >
-          <FaShoppingCart />
-
-          {cartCount > 0 && (
-            <span className="badge">
-              {cartCount}
-            </span>
-          )}
-        </NavLink>
-
-        {/* Orders */}
-        <NavLink
-          to="/orders"
-          className="orders-link"
-          onClick={() => setMenuOpen(false)}
-        >
-          <FaBoxOpen />
-          <span>Orders</span>
-        </NavLink>
-
-        {/* Profile */}
-        <NavLink
-          to="/profile"
-          className="profile-link"
-          onClick={() => setMenuOpen(false)}
-        >
-          <FaUser />
-          <span>Profile</span>
-        </NavLink>
-
-        {/* Theme */}
-        <button
-          className="mode-btn"
-          onClick={toggleTheme}
-        >
-          {darkMode ? "☀️" : "🌙"}
-        </button>
-
-      </div>
-    </nav>
-  );
-}
-
-export default Navbar;
-
-
-
-
-//  import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 // import {
 //   FaShoppingCart,
 //   FaHeart,
@@ -178,7 +26,7 @@ export default Navbar;
 //   const [menuOpen, setMenuOpen] = useState(false);
 
 //   const cartCount = cart.reduce(
-//     (total, item) => total + item.quantity,
+//     (total, item) => total + Number(item.quantity || 0),
 //     0
 //   );
 
@@ -192,7 +40,6 @@ export default Navbar;
 //     <nav className="navbar-custom">
 
 //       {/* Logo */}
-
 //       <NavLink
 //         to="/"
 //         className="logo"
@@ -202,7 +49,6 @@ export default Navbar;
 //       </NavLink>
 
 //       {/* Search */}
-
 //       <div className="search-box">
 //         <FaSearch />
 
@@ -213,7 +59,6 @@ export default Navbar;
 //       </div>
 
 //       {/* Mobile Menu */}
-
 //       <div
 //         className="menu-icon"
 //         onClick={() => setMenuOpen(!menuOpen)}
@@ -222,7 +67,6 @@ export default Navbar;
 //       </div>
 
 //       {/* Navigation */}
-
 //       <div className={`nav-links ${menuOpen ? "active" : ""}`}>
 
 //         <NavLink
@@ -240,7 +84,6 @@ export default Navbar;
 //         </NavLink>
 
 //         {/* Wishlist */}
-
 //         <NavLink
 //           to="/wishlist"
 //           className="wishlist-icon"
@@ -256,7 +99,6 @@ export default Navbar;
 //         </NavLink>
 
 //         {/* Cart */}
-
 //         <NavLink
 //           to="/cart"
 //           className="cart-icon"
@@ -272,31 +114,26 @@ export default Navbar;
 //         </NavLink>
 
 //         {/* Orders */}
-
 //         <NavLink
 //           to="/orders"
 //           className="orders-link"
 //           onClick={() => setMenuOpen(false)}
 //         >
 //           <FaBoxOpen />
-
 //           <span>Orders</span>
 //         </NavLink>
 
 //         {/* Profile */}
-
 //         <NavLink
 //           to="/profile"
 //           className="profile-link"
 //           onClick={() => setMenuOpen(false)}
 //         >
 //           <FaUser />
-
 //           <span>Profile</span>
 //         </NavLink>
 
 //         {/* Theme */}
-
 //         <button
 //           className="mode-btn"
 //           onClick={toggleTheme}
@@ -305,139 +142,309 @@ export default Navbar;
 //         </button>
 
 //       </div>
-
 //     </nav>
 //   );
 // }
 
 // export default Navbar;
 
-// import { NavLink } from "react-router-dom";
-// import {
-//   FaShoppingCart,
-//   FaHeart,
-//   FaUser,
-//   FaSearch,
-//   FaBars,
-//   FaTimes,
-// } from "react-icons/fa";
-// import { useContext, useState } from "react";
 
-// import { CartContext } from "../../context/CartContext";
-// import { WishlistContext } from "../../context/WishlistContext";
-// import { ThemeContext } from "../../context/ThemeContext";
+import { NavLink, useNavigate } from "react-router-dom";
 
-// import "./Navbar.css";
+import {
+  FaShoppingCart,
+  FaHeart,
+  FaUser,
+  FaSearch,
+  FaBars,
+  FaTimes,
+  FaBoxOpen,
+} from "react-icons/fa";
 
-// function Navbar() {
-//   const { cart } = useContext(CartContext);
-//   const { wishlist } = useContext(WishlistContext);
-//   const { darkMode, setDarkMode } = useContext(ThemeContext);
+import { useContext, useState } from "react";
 
-//   const [menuOpen, setMenuOpen] = useState(false);
+import { CartContext } from "../../context/CartContext";
+import { WishlistContext } from "../../context/WishlistContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
-//   const cartCount = cart.reduce(
-//     (total, item) => total + item.quantity,
-//     0
-//   );
+import "./Navbar.css";
 
-//   const wishlistCount = wishlist.length;
+function Navbar() {
+  const navigate = useNavigate();
 
-//   const toggleTheme = () => {
-//     setDarkMode(!darkMode);
-//   };
+  const { cart } = useContext(CartContext);
+  const { wishlist } = useContext(WishlistContext);
+  const { darkMode, setDarkMode } =
+    useContext(ThemeContext);
 
-//   return (
-//     <nav className="navbar-custom">
+  const [menuOpen, setMenuOpen] =
+    useState(false);
 
-//       {/* Logo */}
-//       <NavLink
-//         to="/"
-//         className="logo"
-//         onClick={() => setMenuOpen(false)}
-//       >
-//         🛍 ShopSphere
-//       </NavLink>
+  const [search, setSearch] =
+    useState("");
 
-//       {/* Search */}
-//       <div className="search-box">
-//         <FaSearch />
-//         <input
-//           type="text"
-//           placeholder="Search products..."
-//         />
-//       </div>
+  // =========================
+  // CART COUNT
+  // =========================
 
-//       {/* Mobile Menu */}
-//       <div
-//         className="menu-icon"
-//         onClick={() => setMenuOpen(!menuOpen)}
-//       >
-//         {menuOpen ? <FaTimes /> : <FaBars />}
-//       </div>
+  const cartCount = cart.reduce(
+    (total, item) =>
+      total + Number(item.quantity || 0),
+    0
+  );
 
-//       {/* Navigation */}
-//       <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+  // =========================
+  // WISHLIST COUNT
+  // =========================
 
-//         <NavLink
-//           to="/"
-//           onClick={() => setMenuOpen(false)}
-//         >
-//           Home
-//         </NavLink>
+  const wishlistCount = wishlist.length;
 
-//         <NavLink
-//           to="/products"
-//           onClick={() => setMenuOpen(false)}
-//         >
-//           Products
-//         </NavLink>
+  // =========================
+  // SEARCH
+  // =========================
 
-//         <NavLink
-//           to="/wishlist"
-//           className="wishlist-icon"
-//           onClick={() => setMenuOpen(false)}
-//         >
-//           <FaHeart />
-//           {wishlistCount > 0 && (
-//             <span className="badge">
-//               {wishlistCount}
-//             </span>
-//           )}
-//         </NavLink>
+  const handleSearch = (e) => {
+    e.preventDefault();
 
-//         <NavLink
-//           to="/cart"
-//           className="cart-icon"
-//           onClick={() => setMenuOpen(false)}
-//         >
-//           <FaShoppingCart />
-//           {cartCount > 0 && (
-//             <span className="badge">
-//               {cartCount}
-//             </span>
-//           )}
-//         </NavLink>
+    const searchValue = search.trim();
 
-//         <NavLink
-//           to="/login"
-//           onClick={() => setMenuOpen(false)}
-//         >
-//           <FaUser />
-//         </NavLink>
+    if (!searchValue) {
+      navigate("/products");
+    } else {
+      navigate(
+        `/products?search=${encodeURIComponent(
+          searchValue
+        )}`
+      );
+    }
 
-//         {/* Theme Toggle */}
-//         <button
-//           className="mode-btn"
-//           onClick={toggleTheme}
-//         >
-//           {darkMode ? "☀️" : "🌙"}
-//         </button>
+    setMenuOpen(false);
+  };
 
-//       </div>
+  // =========================
+  // THEME
+  // =========================
 
-//     </nav>
-//   );
-// }
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
 
-// export default Navbar;
+  // =========================
+  // CLOSE MENU
+  // =========================
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  return (
+    <nav className="navbar-custom">
+
+      {/* =========================
+          LOGO
+      ========================= */}
+
+      <NavLink
+        to="/"
+        className="logo"
+        onClick={closeMenu}
+      >
+        🛍 ShopSphere
+      </NavLink>
+
+
+      {/* =========================
+          DESKTOP SEARCH
+      ========================= */}
+
+      <form
+        className="search-box desktop-search"
+        onSubmit={handleSearch}
+      >
+        <FaSearch />
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) =>
+            setSearch(e.target.value)
+          }
+        />
+      </form>
+
+
+      {/* =========================
+          MOBILE MENU BUTTON
+      ========================= */}
+
+      <div
+        className="menu-icon"
+        onClick={() =>
+          setMenuOpen(!menuOpen)
+        }
+      >
+        {menuOpen ? (
+          <FaTimes />
+        ) : (
+          <FaBars />
+        )}
+      </div>
+
+
+      {/* =========================
+          NAVIGATION
+      ========================= */}
+
+      <div
+        className={`nav-links ${
+          menuOpen ? "active" : ""
+        }`}
+      >
+
+        {/* =========================
+            MOBILE SEARCH
+        ========================= */}
+
+        <form
+          className="search-box mobile-search"
+          onSubmit={handleSearch}
+        >
+          <FaSearch />
+
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+          />
+
+          <button type="submit">
+            Search
+          </button>
+        </form>
+
+
+        {/* =========================
+            HOME
+        ========================= */}
+
+        <NavLink
+          to="/"
+          onClick={closeMenu}
+        >
+          Home
+        </NavLink>
+
+
+        {/* =========================
+            PRODUCTS
+        ========================= */}
+
+        <NavLink
+          to="/products"
+          onClick={closeMenu}
+        >
+          Products
+        </NavLink>
+
+
+        {/* =========================
+            WISHLIST
+        ========================= */}
+
+        <NavLink
+          to="/wishlist"
+          className="wishlist-icon"
+          onClick={closeMenu}
+        >
+          <FaHeart />
+
+          <span>Wishlist</span>
+
+          {wishlistCount > 0 && (
+            <span className="badge">
+              {wishlistCount}
+            </span>
+          )}
+        </NavLink>
+
+
+        {/* =========================
+            CART
+        ========================= */}
+
+        <NavLink
+          to="/cart"
+          className="cart-icon"
+          onClick={closeMenu}
+        >
+          <FaShoppingCart />
+
+          <span>Cart</span>
+
+          {cartCount > 0 && (
+            <span className="badge">
+              {cartCount}
+            </span>
+          )}
+        </NavLink>
+
+
+        {/* =========================
+            ORDERS
+        ========================= */}
+
+        <NavLink
+          to="/orders"
+          className="orders-link"
+          onClick={closeMenu}
+        >
+          <FaBoxOpen />
+
+          <span>Orders</span>
+        </NavLink>
+
+
+        {/* =========================
+            PROFILE
+        ========================= */}
+
+        <NavLink
+          to="/profile"
+          className="profile-link"
+          onClick={closeMenu}
+        >
+          <FaUser />
+
+          <span>Profile</span>
+        </NavLink>
+
+
+        {/* =========================
+            DARK MODE
+        ========================= */}
+
+        <button
+          className="mode-btn"
+          onClick={toggleTheme}
+          type="button"
+        >
+          {darkMode ? "☀️" : "🌙"}
+
+          <span>
+            {darkMode
+              ? "Light Mode"
+              : "Dark Mode"}
+          </span>
+        </button>
+
+      </div>
+
+    </nav>
+  );
+}
+
+export default Navbar;

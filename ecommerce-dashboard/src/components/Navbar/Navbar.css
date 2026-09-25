@@ -29,8 +29,10 @@
 .logo {
   color: #111827;
   text-decoration: none;
+
   font-size: 24px;
   font-weight: 700;
+
   white-space: nowrap;
 }
 
@@ -50,6 +52,7 @@
 
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   padding: 0 14px;
@@ -58,6 +61,8 @@
   border-radius: 8px;
 
   background: #f9fafb;
+
+  box-sizing: border-box;
 }
 
 .search-box svg {
@@ -83,11 +88,13 @@
 .nav-links {
   display: flex;
   align-items: center;
+
   gap: 22px;
 }
 
 .nav-links a {
   color: #374151;
+
   text-decoration: none;
 
   font-size: 15px;
@@ -95,6 +102,7 @@
 
   display: flex;
   align-items: center;
+
   gap: 6px;
 
   position: relative;
@@ -142,7 +150,7 @@
   padding: 0 4px;
 
   background: #dc2626;
-  color: white;
+  color: #ffffff;
 
   border-radius: 50%;
 
@@ -224,31 +232,44 @@
     padding: 0 18px;
 
     justify-content: space-between;
+
+    position: sticky;
   }
 
-  /* Logo */
+  /* =========================
+     LOGO
+  ========================= */
 
   .logo {
     font-size: 21px;
   }
 
-  /* Search */
+  /* =========================
+     DESKTOP SEARCH HIDE
+  ========================= */
 
   .search-box {
     display: none;
   }
 
-  /* Hamburger */
+  /* =========================
+     HAMBURGER
+  ========================= */
 
   .menu-icon {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     margin-left: auto;
+
+    z-index: 1100;
   }
 
-  /* Mobile Navigation */
+  /* =========================
+     MOBILE NAVIGATION
+  ========================= */
 
   .nav-links {
     position: absolute;
@@ -277,13 +298,27 @@
     box-sizing: border-box;
   }
 
-  /* Open menu */
+  /* =========================
+     OPEN MENU
+  ========================= */
 
   .nav-links.active {
     display: flex;
   }
 
-  /* Mobile links */
+  /* =========================
+     MOBILE SEARCH
+  ========================= */
+
+  .nav-links.active::before {
+    content: "Search Products";
+
+    display: none;
+  }
+
+  /* =========================
+     MOBILE LINKS
+  ========================= */
 
   .nav-links a {
     width: 100%;
@@ -293,6 +328,7 @@
     padding: 0 22px;
 
     display: flex;
+
     align-items: center;
 
     gap: 12px;
@@ -304,21 +340,27 @@
     background: #f3f4f6;
   }
 
-  /* Orders/Profile text */
+  /* =========================
+     ORDERS / PROFILE
+  ========================= */
 
   .orders-link span,
   .profile-link span {
     display: inline;
   }
 
-  /* Wishlist / Cart */
+  /* =========================
+     WISHLIST / CART
+  ========================= */
 
   .wishlist-icon,
   .cart-icon {
     font-size: 16px;
   }
 
-  /* Badge */
+  /* =========================
+     BADGE
+  ========================= */
 
   .badge {
     position: static;
@@ -326,7 +368,9 @@
     margin-left: 4px;
   }
 
-  /* Theme */
+  /* =========================
+     THEME
+  ========================= */
 
   .mode-btn {
     width: 100%;
@@ -338,11 +382,11 @@
     padding: 0 22px;
   }
 
-  /* Close / Menu icon */
-
-  .menu-icon {
-    z-index: 1100;
+  .mode-btn:hover {
+    transform: none;
+    background: #f3f4f6;
   }
+
 }
 
 /* =========================
@@ -367,15 +411,18 @@
 
 
 /* =========================
-   NAVBAR DARK THEME
+   DARK THEME
 ========================= */
 
 body.dark .navbar-custom {
   background: #111827;
+
   border-bottom: 1px solid #374151;
 }
 
-/* Logo */
+/* =========================
+   DARK LOGO
+========================= */
 
 body.dark .logo {
   color: #ffffff;
@@ -385,10 +432,13 @@ body.dark .logo:hover {
   color: #ff7a00;
 }
 
-/* Search */
+/* =========================
+   DARK SEARCH
+========================= */
 
 body.dark .search-box {
   background: #1f2937;
+
   border-color: #4b5563;
 }
 
@@ -404,7 +454,9 @@ body.dark .search-box input::placeholder {
   color: #9ca3af;
 }
 
-/* Navigation */
+/* =========================
+   DARK NAVIGATION
+========================= */
 
 body.dark .nav-links a {
   color: #e5e7eb;
@@ -418,16 +470,21 @@ body.dark .nav-links a.active {
   color: #ff7a00;
 }
 
-/* Mobile Menu Icon */
+/* =========================
+   DARK MENU ICON
+========================= */
 
 body.dark .menu-icon {
   color: #ffffff;
 }
 
-/* Mobile Dropdown */
+/* =========================
+   DARK MOBILE MENU
+========================= */
 
 body.dark .nav-links {
   background: #111827;
+
   border-top-color: #374151;
   border-bottom-color: #374151;
 }
@@ -436,14 +493,19 @@ body.dark .nav-links a:hover {
   background: #1f2937;
 }
 
-/* Wishlist / Cart Badge */
+/* =========================
+   DARK BADGE
+========================= */
 
 body.dark .badge {
   background: #dc2626;
+
   color: #ffffff;
 }
 
-/* Theme Button */
+/* =========================
+   DARK THEME BUTTON
+========================= */
 
 body.dark .mode-btn {
   color: #ffffff;
@@ -451,5 +513,6 @@ body.dark .mode-btn {
 
 body.dark .mode-btn:hover {
   color: #ff7a00;
-}
 
+  background: #1f2937;
+}
