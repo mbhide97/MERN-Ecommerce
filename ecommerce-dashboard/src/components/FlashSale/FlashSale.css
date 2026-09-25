@@ -1,0 +1,447 @@
+
+.flash-sale {
+  width: 100%;
+  padding: 80px 20px;
+  background: #f7f8fc;
+}
+
+.sale-header {
+  max-width: 1200px;
+  margin: 0 auto 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.sale-header h2 {
+  margin: 0;
+
+  color: #222;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #ff5a00;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  text-shadow:
+    0 0 10px rgba(255, 90, 0, 0.35);
+}
+
+.countdown span {
+  position: relative;
+
+  min-width: 62px;
+  height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    145deg,
+    #ff3d00,
+    #ff7a00,
+    #ff9d00
+  );
+
+  color: #ffffff;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  border: 2px solid rgba(255, 255, 255, 0.6);
+
+  box-shadow:
+    0 8px 20px rgba(255, 90, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.countdown span:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 28px rgba(255, 90, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Labels below timer boxes */
+
+.countdown span::after {
+  position: absolute;
+
+  bottom: 6px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+/*
+  nth-child accounts for:
+  span : span : span : span
+*/
+
+.countdown span:nth-child(1)::after {
+  content: "DAYS";
+}
+
+.countdown span:nth-child(2)::after {
+  content: "HOURS";
+}
+
+.countdown span:nth-child(3)::after {
+  content: "MIN";
+}
+
+.countdown span:nth-child(4)::after {
+  content: "SEC";
+}
+
+/* Colon between timer boxes */
+
+.countdown {
+  gap: 8px;
+}
+
+/* =========================
+   SALE GRID
+========================= */
+
+.sale-grid {
+  max-width: 1200px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* =========================
+   SALE CARD
+========================= */
+
+.sale-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding-bottom: 20px;
+
+  background: #fff;
+
+  border: 1px solid #eee;
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.07);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.sale-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* =========================
+   SALE BADGE
+========================= */
+
+.sale-badge {
+  position: absolute;
+
+  top: 15px;
+  left: 15px;
+
+  z-index: 3;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #ff3b30,
+    #ff7a00
+  );
+
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 15px rgba(255, 59, 48, 0.3);
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.sale-image {
+  width: 100%;
+  height: 260px;
+
+  overflow: hidden;
+
+  background: #f3f3f3;
+}
+
+.sale-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.sale-card:hover .sale-image img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   PRODUCT NAME
+========================= */
+
+.sale-card h3 {
+  margin: 18px 15px 10px;
+
+  color: #222;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.sale-card .price {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+.sale-card .new-price {
+  color: #ff5a00;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.sale-card .old-price {
+  color: #999;
+
+  font-size: 14px;
+
+  text-decoration: line-through;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.sale-card button {
+  width: calc(100% - 40px);
+  height: 45px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #ff5a00,
+    #ff9800
+  );
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.sale-card button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 22px rgba(255, 90, 0, 0.35);
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.sale-loading {
+  padding: 40px;
+
+  text-align: center;
+
+  color: #777;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark .flash-sale {
+  background: #111827;
+}
+
+body.dark .sale-header h2 {
+  color: #fff;
+}
+
+body.dark .sale-card {
+  background: #1f2937;
+
+  border-color: #374151;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .sale-card h3 {
+  color: #fff;
+}
+
+body.dark .sale-image {
+  background: #273449;
+}
+
+body.dark .sale-card .old-price {
+  color: #9ca3af;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+  .flash-sale {
+    padding: 65px 20px;
+  }
+
+  .sale-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .sale-image {
+    height: 280px;
+  }
+
+  .countdown span {
+    min-width: 55px;
+    height: 62px;
+
+    font-size: 22px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 576px) {
+  .flash-sale {
+    padding: 55px 15px;
+  }
+
+  .sale-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+  }
+
+  .sale-header h2 {
+    font-size: 27px;
+  }
+
+  .countdown {
+    width: 100%;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    gap: 5px;
+  }
+
+  .countdown span {
+    min-width: 52px;
+    height: 60px;
+
+    border-radius: 11px;
+
+    font-size: 20px;
+  }
+
+  .countdown span::after {
+    bottom: 5px;
+
+    font-size: 7px;
+  }
+
+  .sale-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sale-card {
+    border-radius: 16px;
+  }
+
+  .sale-image {
+    height: 300px;
+  }
+}
+ 

@@ -1,0 +1,146 @@
+ /* ===========================
+   GLOBAL RESET
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  transition: all .3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===========================
+   LIGHT MODE
+=========================== */
+
+body {
+  background: #ffffff;
+  color: #111111;
+}
+
+/* Main Sections */
+
+.hero-wrapper,
+.products-page,
+.featured-section,
+.categories-section,
+.flash-sale,
+.new-arrivals,
+.brands-section,
+.footer,
+.cart-page,
+.wishlist-page,
+.checkout-page,
+.profile-page {
+  background: #ffffff;
+  color: #111111;
+  transition: .3s;
+}
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+body.dark {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Main Sections */
+
+body.dark .hero-wrapper,
+body.dark .products-page,
+body.dark .featured-section,
+body.dark .categories-section,
+body.dark .flash-sale,
+body.dark .new-arrivals,
+body.dark .brands-section,
+body.dark .footer,
+body.dark .cart-page,
+body.dark .wishlist-page,
+body.dark .checkout-page,
+body.dark .profile-page {
+  background: #000000 !important;
+  color: white !important;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+body.dark .product-card,
+body.dark .category-card,
+body.dark .flash-card,
+body.dark .arrival-card,
+body.dark .brand-card,
+body.dark .cart-item,
+body.dark .wishlist-card,
+body.dark .testimonial-card {
+  background: #111111 !important;
+  color: white !important;
+  border: 1px solid #333;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+body.dark .navbar-custom {
+  background: #111111 !important;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #111111 !important;
+  color: white !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark input::placeholder {
+  color: #ccc;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p,
+body.dark span,
+body.dark a,
+body.dark label {
+  color: white !important;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+body.dark button {
+  transition: .3s;
+}
+
+body.dark .cart-btn {
+  background: #ff6b00;
+}
+
+body.dark .wish-btn {
+  background: #222;
+}

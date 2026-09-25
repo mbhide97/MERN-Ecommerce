@@ -1,0 +1,892 @@
+
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+
+/* ===========================
+   THEME
+=========================== */
+
+:root{
+
+    --bg:#f5f7fb;
+
+    --card:#ffffff;
+
+    --text:#222;
+
+    --text-light:#666;
+
+    --primary:#ff7a00;
+
+    --border:#ececec;
+
+    --input:#ffffff;
+
+    --soft:#fff3e8;
+
+    --shadow:0 12px 35px rgba(0,0,0,.08);
+
+}
+
+
+body.dark{
+
+    --bg:#0f172a;
+
+    --card:#1e293b;
+
+    --text:#fff;
+
+    --text-light:#cbd5e1;
+
+    --border:#334155;
+
+    --input:#273449;
+
+    --soft:#3b2d14;
+
+    --shadow:0 18px 40px rgba(0,0,0,.35);
+
+}
+
+
+/* ===========================
+      PAGE
+=========================== */
+
+.checkout-page{
+
+    min-height:100vh;
+
+    background:var(--bg);
+
+    padding:45px;
+
+    color:var(--text);
+
+    transition:.35s;
+
+}
+
+
+.checkout-title{
+
+    max-width:1200px;
+
+    margin:0 auto 40px;
+
+    text-align:center;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+
+/* ===========================
+      MAIN CONTAINER
+=========================== */
+
+.checkout-container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1.6fr 1fr;
+
+    gap:30px;
+
+    align-items:start;
+
+}
+
+
+/* ===========================
+      LEFT SIDE
+=========================== */
+
+.checkout-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+/* ===========================
+      CHECKOUT CARD
+=========================== */
+
+.checkout-card{
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+
+.checkout-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+.checkout-card h2{
+
+    color:var(--text);
+
+    font-size:23px;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ===========================
+      FORM
+=========================== */
+
+.form-group{
+
+    margin-bottom:20px;
+
+}
+
+
+.form-group:last-child{
+
+    margin-bottom:0;
+
+}
+
+
+.form-group label{
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+
+.form-group input,
+.form-group textarea{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:var(--input);
+
+    color:var(--text);
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+
+.form-group input{
+
+    height:50px;
+
+}
+
+
+.form-group textarea{
+
+    min-height:120px;
+
+    resize:vertical;
+
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+
+    color:var(--text-light);
+
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(255,122,0,.12);
+
+}
+
+
+/* ===========================
+      PAYMENT METHOD
+=========================== */
+
+.payment-option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+    border:2px solid var(--border);
+
+    border-radius:15px;
+
+    background:var(--card);
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+
+.payment-option:last-child{
+
+    margin-bottom:0;
+
+}
+
+
+.payment-option:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+}
+
+
+.payment-option.active{
+
+    border-color:var(--primary);
+
+    background:var(--soft);
+
+}
+
+
+.payment-icon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #ff7a00,
+        #ff9800
+    );
+
+    color:#fff;
+
+    font-size:20px;
+
+    flex-shrink:0;
+
+}
+
+
+.payment-option > div:nth-child(2){
+
+    flex:1;
+
+}
+
+
+.payment-option h3{
+
+    color:var(--text);
+
+    font-size:16px;
+
+    margin-bottom:4px;
+
+}
+
+
+.payment-option p{
+
+    color:var(--text-light);
+
+    font-size:13px;
+
+}
+
+
+.payment-option input[type="radio"]{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+    cursor:pointer;
+
+}
+
+
+/* ===========================
+      RIGHT SIDE
+=========================== */
+
+.checkout-right{
+
+    position:sticky;
+
+    top:25px;
+
+}
+
+
+/* ===========================
+      SUMMARY CARD
+=========================== */
+
+.checkout-summary{
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+
+.checkout-summary h2{
+
+    color:var(--text);
+
+    font-size:23px;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ===========================
+      SUMMARY ROW
+=========================== */
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--text-light);
+
+    font-size:14px;
+
+}
+
+
+.summary-row span:last-child{
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+
+.checkout-summary hr{
+
+    border:none;
+
+    border-top:1px solid var(--border);
+
+    margin:20px 0;
+
+}
+
+
+/* ===========================
+      TOTAL
+=========================== */
+
+.summary-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+
+.summary-total span{
+
+    color:var(--text);
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+.summary-total h3{
+
+    color:var(--primary);
+
+    font-size:30px;
+
+}
+
+
+/* ===========================
+      PLACE ORDER BUTTON
+=========================== */
+
+.place-order-btn{
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(
+        135deg,
+        #ff7a00,
+        #ff9800
+    );
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+
+.place-order-btn:hover:not(:disabled){
+
+    transform:translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 12px 25px
+        rgba(255,122,0,.35);
+
+}
+
+
+.place-order-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* ===========================
+      BACK TO CART
+=========================== */
+
+.back-cart-btn{
+
+    width:100%;
+
+    height:48px;
+
+    margin-top:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+
+.back-cart-btn:hover:not(:disabled){
+
+    transform:translateY(-3px);
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+
+.back-cart-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* ===========================
+      SECURE CHECKOUT
+=========================== */
+
+.secure-checkout{
+
+    margin-top:20px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:var(--soft);
+
+    color:var(--text-light);
+
+    text-align:center;
+
+    font-size:13px;
+
+}
+
+
+/* ===========================
+      DARK MODE EXTRA
+=========================== */
+
+body.dark .checkout-page{
+
+    background:var(--bg);
+
+}
+
+
+body.dark .checkout-card,
+body.dark .checkout-summary{
+
+    box-shadow:var(--shadow);
+
+}
+
+
+body.dark .payment-option.active{
+
+    background:#3b2d14;
+
+    border-color:#ff9800;
+
+}
+
+
+body.dark .form-group input,
+body.dark .form-group textarea{
+
+    background:var(--input);
+
+    color:var(--text);
+
+}
+
+
+body.dark .back-cart-btn{
+
+    background:var(--card);
+
+    color:var(--text);
+
+}
+
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media (max-width:1100px){
+
+    .checkout-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .checkout-right{
+
+        position:static;
+
+    }
+
+}
+
+
+/* ===========================
+      TABLET
+=========================== */
+
+@media (max-width:768px){
+
+    .checkout-page{
+
+        padding:30px 25px;
+
+    }
+
+    .checkout-title{
+
+        font-size:30px;
+
+    }
+
+    .checkout-card,
+    .checkout-summary{
+
+        padding:25px;
+
+        border-radius:18px;
+
+    }
+
+}
+
+
+/* ===========================
+      MOBILE
+=========================== */
+
+@media (max-width:576px){
+
+    .checkout-page{
+
+        padding:20px 15px;
+
+    }
+
+    .checkout-title{
+
+        font-size:26px;
+
+        margin-bottom:25px;
+
+    }
+
+    .checkout-card,
+    .checkout-summary{
+
+        padding:20px;
+
+        border-radius:16px;
+
+    }
+
+    .checkout-card h2,
+    .checkout-summary h2{
+
+        font-size:20px;
+
+    }
+
+    .payment-option{
+
+        padding:14px;
+
+        gap:10px;
+
+    }
+
+    .payment-icon{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:17px;
+
+    }
+
+    .payment-option h3{
+
+        font-size:14px;
+
+    }
+
+    .payment-option p{
+
+        font-size:11px;
+
+    }
+
+    .summary-total h3{
+
+        font-size:25px;
+
+    }
+
+}
+
+
+/* ===========================
+      SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:var(--bg);
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+
+/* ===========================
+      ANIMATION
+=========================== */
+
+.checkout-card,
+.checkout-summary{
+
+    animation:fadeUp .6s ease;
+
+}
+
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ===========================
+      HOVER ANIMATION
+=========================== */
+
+.checkout-card,
+.checkout-summary,
+.payment-option,
+.place-order-btn,
+.back-cart-btn{
+
+    transition:all .35s ease;
+
+}
