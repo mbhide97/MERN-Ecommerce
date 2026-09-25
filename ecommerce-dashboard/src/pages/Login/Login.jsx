@@ -1,3 +1,7 @@
+ 
+
+
+
 // import { useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 
@@ -17,110 +21,132 @@
 // function Login() {
 //   const navigate = useNavigate();
 
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+
 //   const [showPassword, setShowPassword] = useState(false);
-
-  
 //   const [loading, setLoading] = useState(false);
-
 //   const [error, setError] = useState("");
 
-//   const savedUser =
-//   JSON.parse(
-//     localStorage.getItem("registeredUser")
-//   ) || {};
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
 
-// const [email, setEmail] = useState(
-//   savedUser.email || ""
-// );
+//     setError("");
 
-// const [password, setPassword] = useState(
-//   savedUser.password || ""
-// );
+//     if (!email.trim() || !password.trim()) {
+//       setError("Please fill all fields");
+//       return;
+//     }
 
-// const handleLogin = (e) => {
-//   e.preventDefault();
+//     try {
+//       setLoading(true);
 
-//   setError("");
+//       const response = await API.post("/auth/login", {
+//         email: email.trim(),
+//         password: password,
+//       });
 
-//   if (!email.trim() || !password.trim()) {
-//     setError("Please fill all fields");
-//     return;
-//   }
+//       console.log("Login Response:", response.data);
 
-//   const savedUser =
-//     JSON.parse(
-//       localStorage.getItem("registeredUser")
-//     );
+//       // Save JWT Token
+//       if (response.data.token) {
+//         localStorage.setItem(
+//           "token",
+//           response.data.token
+//         );
+//       }
 
-//   if (!savedUser) {
-//     setError(
-//       "No account found. Please Sign Up first."
-//     );
-//     return;
-//   }
+//       // Save User
+//       if (response.data.user) {
+//         localStorage.setItem(
+//           "user",
+//           JSON.stringify(response.data.user)
+//         );
+//       } else {
+//         localStorage.setItem(
+//           "user",
+//           JSON.stringify({
+//             email: email.trim(),
+//           })
+//         );
+//       }
 
-//   if (
-//     email.trim() !== savedUser.email ||
-//     password !== savedUser.password
-//   ) {
-//     setError("Invalid email or password");
-//     return;
-//   }
+//       alert("Login Successful ✅");
 
-//   localStorage.setItem(
-//     "user",
-//     JSON.stringify(savedUser)
-//   );
+//       navigate("/");
 
-//   alert("Login Successful ✅");
+//     } catch (error) {
+//       console.error("Login Error:", error);
 
-//   navigate("/");
-// };
-   
+//       setError(
+//         error.response?.data?.message ||
+//           "Invalid email or password"
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
 //   return (
 //     <section className="login-page">
-//       <div className="login-card">
-//         {/* LEFT */}
 
+//       <div className="login-card">
+
+//         {/* LEFT SIDE */}
 //         <div className="login-left">
-//           <h1>Welcome Back 👋</h1>
+
+//           <h1>
+//             Welcome Back 👋
+//           </h1>
 
 //           <p>
-//             Login to your ShopSphere account and continue shopping.
+//             Login to your ShopSphere account
+//             and continue shopping.
 //           </p>
 
 //           <img
 //             src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=600"
 //             alt="login"
 //           />
+
 //         </div>
 
-//         {/* RIGHT */}
-
+//         {/* RIGHT SIDE */}
 //         <div className="login-right">
-//           <h2>Login</h2>
+
+//           <h2>
+//             Login
+//           </h2>
 
 //           <form onSubmit={handleLogin}>
-//             {/* Email */}
 
+//             {/* EMAIL */}
 //             <div className="input-box">
+
 //               <FaEnvelope />
 
 //               <input
 //                 type="email"
 //                 placeholder="Enter Email"
 //                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)}
+//                 onChange={(e) =>
+//                   setEmail(e.target.value)
+//                 }
 //               />
+
 //             </div>
 
-//             {/* Password */}
-
+//             {/* PASSWORD */}
 //             <div className="input-box">
+
 //               <FaLock />
 
 //               <input
-//                 type={showPassword ? "text" : "password"}
+//                 type={
+//                   showPassword
+//                     ? "text"
+//                     : "password"
+//                 }
 //                 placeholder="Enter Password"
 //                 value={password}
 //                 onChange={(e) =>
@@ -130,8 +156,13 @@
 
 //               <span
 //                 onClick={() =>
-//                   setShowPassword(!showPassword)
+//                   setShowPassword(
+//                     !showPassword
+//                   )
 //                 }
+//                 style={{
+//                   cursor: "pointer",
+//                 }}
 //               >
 //                 {showPassword ? (
 //                   <FaEyeSlash />
@@ -139,15 +170,19 @@
 //                   <FaEye />
 //                 )}
 //               </span>
+
 //             </div>
 
-//             {/* Error */}
+//             {/* ERROR */}
+//             {error && (
+//               <p className="error">
+//                 {error}
+//               </p>
+//             )}
 
-//             {error && <p className="error">{error}</p>}
-
-//             {/* Remember */}
-
+//             {/* OPTIONS */}
 //             <div className="login-options">
+
 //               <label>
 //                 <input type="checkbox" />
 //                 Remember Me
@@ -156,53 +191,65 @@
 //               <Link to="/forgot-password">
 //                 Forgot Password?
 //               </Link>
+
 //             </div>
 
-//             {/* Login */}
-
+//             {/* LOGIN BUTTON */}
 //             <button
 //               type="submit"
 //               className="login-btn"
 //               disabled={loading}
 //             >
-//               {loading ? "Logging In..." : "Login"}
+//               {loading
+//                 ? "Logging In..."
+//                 : "Login"}
 //             </button>
+
 //           </form>
 
-//           {/* Divider */}
+//           {/* DIVIDER */}
+//           <div className="divider">
+//             OR
+//           </div>
 
-//           <div className="divider">OR</div>
-
-//           {/* Google */}
-
-//           <button className="google-btn">
+//           {/* GOOGLE */}
+//           <button
+//             type="button"
+//             className="google-btn"
+//           >
 //             <FaGoogle />
 //             Continue with Google
 //           </button>
 
-//           {/* GitHub */}
-
-//           <button className="github-btn">
+//           {/* GITHUB */}
+//           <button
+//             type="button"
+//             className="github-btn"
+//           >
 //             <FaGithub />
 //             Continue with GitHub
 //           </button>
 
-//           {/* Signup */}
-
+//           {/* SIGNUP */}
 //           <p className="signup-text">
+
 //             Don't have an account?
 
-//             <Link to="/signup"> Sign Up </Link>
+//             <Link to="/signup">
+//               {" "}Sign Up
+//             </Link>
+
 //           </p>
+
 //         </div>
+
 //       </div>
+
 //     </section>
 //   );
 // }
 
 // export default Login;
-
-
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -211,10 +258,11 @@ import {
   FaEye,
   FaEyeSlash,
   FaGoogle,
-  FaGithub,
   FaEnvelope,
   FaLock,
 } from "react-icons/fa";
+
+import { GoogleLogin } from "@react-oauth/google";
 
 import API from "../../api/axios";
 
@@ -230,6 +278,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // ================= NORMAL LOGIN =================
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -250,7 +299,44 @@ function Login() {
 
       console.log("Login Response:", response.data);
 
-      // Save JWT Token
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+      }
+
+      if (response.data.user) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.user)
+        );
+      }
+
+      alert("Login Successful ✅");
+
+      navigate("/");
+    } catch (error) {
+      console.error("Login Error:", error);
+
+      setError(
+        error.response?.data?.message ||
+          "Invalid email or password"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ================= GOOGLE LOGIN =================
+  const handleGoogleLogin = async (credentialResponse) => {
+    try {
+      setError("");
+      setLoading(true);
+
+      const response = await API.post("/auth/google", {
+        credential: credentialResponse.credential,
+      });
+
+      console.log("Google Login Response:", response.data);
+
       if (response.data.token) {
         localStorage.setItem(
           "token",
@@ -258,31 +344,22 @@ function Login() {
         );
       }
 
-      // Save User
       if (response.data.user) {
         localStorage.setItem(
           "user",
           JSON.stringify(response.data.user)
         );
-      } else {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            email: email.trim(),
-          })
-        );
       }
 
-      alert("Login Successful ✅");
+      alert("Google Login Successful ✅");
 
       navigate("/");
-
     } catch (error) {
-      console.error("Login Error:", error);
+      console.error("Google Login Error:", error);
 
       setError(
         error.response?.data?.message ||
-          "Invalid email or password"
+          "Google Login Failed"
       );
     } finally {
       setLoading(false);
@@ -358,9 +435,7 @@ function Login() {
 
               <span
                 onClick={() =>
-                  setShowPassword(
-                    !showPassword
-                  )
+                  setShowPassword(!showPassword)
                 }
                 style={{
                   cursor: "pointer",
@@ -411,26 +486,21 @@ function Login() {
 
           {/* DIVIDER */}
           <div className="divider">
-            OR
+            <span>OR</span>
           </div>
 
-          {/* GOOGLE */}
-          <button
-            type="button"
-            className="google-btn"
-          >
-            <FaGoogle />
-            Continue with Google
-          </button>
+          {/* GOOGLE LOGIN */}
+          <div className="google-login-wrapper">
 
-          {/* GITHUB */}
-          <button
-            type="button"
-            className="github-btn"
-          >
-            <FaGithub />
-            Continue with GitHub
-          </button>
+            <GoogleLogin
+              onSuccess={handleGoogleLogin}
+              onError={() => {
+                setError("Google Login Failed");
+              }}
+              useOneTap={false}
+            />
+
+          </div>
 
           {/* SIGNUP */}
           <p className="signup-text">
