@@ -1,3 +1,4 @@
+
 /* =========================
    NAVBAR
 ========================= */
@@ -60,7 +61,8 @@
   border: 1px solid #d1d5db;
   border-radius: 8px;
 
-  background: #f9fafb;
+  /* No white background */
+  background: transparent;
 
   box-sizing: border-box;
 }
@@ -78,7 +80,13 @@
 
   background: transparent;
 
+  color: #111827;
+
   font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #6b7280;
 }
 
 /* =========================
@@ -163,18 +171,57 @@
 ========================= */
 
 .mode-btn {
-  border: none;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #d1d5db;
   background: transparent;
 
-  font-size: 20px;
+  color: #222222;
+
+  font-size: 14px;
+  font-weight: 500;
 
   cursor: pointer;
 
-  padding: 5px;
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+.mode-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
+
+  line-height: 1;
+}
+
+.mode-text {
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1;
 }
 
 .mode-btn:hover {
-  transform: scale(1.1);
+  color: #2563eb;
+
+  border-color: #2563eb;
+
+  background: rgba(37, 99, 235, 0.06);
 }
 
 /* =========================
@@ -189,6 +236,14 @@
   color: #111827;
 
   cursor: pointer;
+}
+
+/* =========================
+   MOBILE SEARCH
+========================= */
+
+.mobile-search {
+  display: none;
 }
 
 /* =========================
@@ -218,6 +273,7 @@
   .profile-link span {
     display: none;
   }
+
 }
 
 /* =========================
@@ -248,7 +304,7 @@
      DESKTOP SEARCH HIDE
   ========================= */
 
-  .search-box {
+  .desktop-search {
     display: none;
   }
 
@@ -310,10 +366,52 @@
      MOBILE SEARCH
   ========================= */
 
-  .nav-links.active::before {
-    content: "Search Products";
+  .mobile-search {
+    display: flex;
 
-    display: none;
+    width: calc(100% - 40px);
+
+    max-width: none;
+
+    height: 44px;
+
+    margin: 5px 20px 15px;
+
+    flex: none;
+
+    background: transparent;
+  }
+
+  .mobile-search input {
+    min-width: 0;
+
+    flex: 1;
+
+    background: transparent;
+  }
+
+  .mobile-search button {
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+  }
+
+  .mobile-search button:hover {
+    background: #1d4ed8;
   }
 
   /* =========================
@@ -377,13 +475,28 @@
 
     min-height: 48px;
 
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 10px;
+
     text-align: left;
 
     padding: 0 22px;
+
+    border: none;
+
+    border-radius: 0;
+
+    background: transparent;
   }
 
   .mode-btn:hover {
     transform: none;
+
     background: #f3f4f6;
   }
 
@@ -407,8 +520,14 @@
     font-size: 23px;
   }
 
-}
+  .mobile-search {
+    width: calc(100% - 28px);
 
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+}
 
 /* =========================
    DARK THEME
@@ -437,7 +556,7 @@ body.dark .logo:hover {
 ========================= */
 
 body.dark .search-box {
-  background: #1f2937;
+  background: transparent;
 
   border-color: #4b5563;
 }
@@ -448,6 +567,8 @@ body.dark .search-box svg {
 
 body.dark .search-box input {
   color: #ffffff;
+
+  background: transparent;
 }
 
 body.dark .search-box input::placeholder {
@@ -494,6 +615,26 @@ body.dark .nav-links a:hover {
 }
 
 /* =========================
+   DARK MOBILE SEARCH
+========================= */
+
+body.dark .mobile-search {
+  background: transparent;
+
+  border-color: #4b5563;
+}
+
+body.dark .mobile-search input {
+  color: #ffffff;
+
+  background: transparent;
+}
+
+body.dark .mobile-search input::placeholder {
+  color: #9ca3af;
+}
+
+/* =========================
    DARK BADGE
 ========================= */
 
@@ -509,6 +650,10 @@ body.dark .badge {
 
 body.dark .mode-btn {
   color: #ffffff;
+
+  border-color: transparent;
+
+  background: transparent;
 }
 
 body.dark .mode-btn:hover {
