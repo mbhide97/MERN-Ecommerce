@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   FaCreditCard,
@@ -48,7 +47,10 @@ function Checkout() {
     try {
       setLoading(true);
 
+      // ======================================
       // STEP 1: CREATE RAZORPAY ORDER
+      // ======================================
+
       const response = await API.post(
         "/orders/razorpay",
         {
@@ -78,21 +80,21 @@ function Checkout() {
       // ======================================
 
       const options = {
-        // IMPORTANT:
-        // Replace this with your actual
-        // Razorpay TEST Key ID
         key: "rzp_test_TfpWyNPgmXowEf",
 
-        amount: razorpayOrder.amount,
+        amount:
+          razorpayOrder.amount,
 
-        currency: razorpayOrder.currency,
+        currency:
+          razorpayOrder.currency,
 
         name: "ShopSphere",
 
         description:
           "ShopSphere Order Payment",
 
-        order_id: razorpayOrder.id,
+        order_id:
+          razorpayOrder.id,
 
         prefill: {
           name: customerName,
@@ -123,7 +125,7 @@ function Checkout() {
 
             const verifyResponse =
               await API.post(
-                "/orders/verify-payment",
+                "/orders/verify",
                 {
                   razorpay_order_id:
                     paymentResponse.razorpay_order_id,
@@ -191,7 +193,8 @@ function Checkout() {
                   razorpayPaymentId:
                     paymentResponse.razorpay_payment_id,
 
-                  paymentStatus: "Paid",
+                  paymentStatus:
+                    "Paid",
                 }
               );
 
@@ -313,25 +316,27 @@ function Checkout() {
   // ==========================================
 
   const placeOrder = async () => {
-    // NAME
+    // ========================================
+    // VALIDATION
+    // ========================================
+
     if (!customerName.trim()) {
       alert("Please enter your name");
       return;
     }
 
-    // EMAIL
     if (!customerEmail.trim()) {
       alert("Please enter your email");
       return;
     }
 
-    // PHONE
     if (!customerPhone.trim()) {
-      alert("Please enter your phone number");
+      alert(
+        "Please enter your phone number"
+      );
       return;
     }
 
-    // ADDRESS
     if (!shippingAddress.trim()) {
       alert(
         "Please enter your shipping address"
@@ -339,7 +344,10 @@ function Checkout() {
       return;
     }
 
+    // ========================================
     // ONLINE PAYMENT
+    // ========================================
+
     if (paymentMethod === "online") {
       await openRazorpay();
       return;
@@ -379,7 +387,8 @@ function Checkout() {
           totalAmount:
             Number(total),
 
-          paymentStatus: "Pending",
+          paymentStatus:
+            "Pending",
         }
       );
 
@@ -428,7 +437,9 @@ function Checkout() {
 
       <div className="checkout-container">
 
-        {/* LEFT SIDE */}
+        {/* ==================================
+            LEFT SIDE
+        ================================== */}
 
         <div className="checkout-left">
 
@@ -518,7 +529,9 @@ function Checkout() {
 
           </div>
 
-          {/* PAYMENT METHOD */}
+          {/* ==================================
+              PAYMENT METHOD
+          ================================== */}
 
           <div className="checkout-card">
 
@@ -612,7 +625,9 @@ function Checkout() {
 
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* ==================================
+            RIGHT SIDE
+        ================================== */}
 
         <div className="checkout-right">
 
@@ -737,4 +752,3 @@ function Checkout() {
 }
 
 export default Checkout;
-

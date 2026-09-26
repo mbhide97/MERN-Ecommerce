@@ -1,4 +1,3 @@
-
 const express = require("express");
 
 const router = express.Router();
@@ -10,6 +9,7 @@ const {
   getMyOrders,
   getSingleOrder,
   updateOrderStatus,
+  testEmail,
 } = require("../controllers/orderController");
 
 const protect = require("../middleware/authMiddleware");
@@ -29,7 +29,7 @@ router.post(
 // ==========================================
 
 router.post(
-  "/verify-payment",
+  "/verify",
   protect,
   verifyPayment
 );
@@ -49,9 +49,20 @@ router.post(
 // ==========================================
 
 router.get(
-  "/",
+  "/my-orders",
   protect,
   getMyOrders
+);
+
+// ==========================================
+// TEST EMAIL
+// IMPORTANT:
+// This must come BEFORE /:id
+// ==========================================
+
+router.get(
+  "/test-email",
+  testEmail
 );
 
 // ==========================================
@@ -69,9 +80,13 @@ router.get(
 // ==========================================
 
 router.put(
-  "/:id",
+  "/:id/status",
   protect,
   updateOrderStatus
 );
+
+// ==========================================
+// EXPORT ROUTER
+// ==========================================
 
 module.exports = router;
