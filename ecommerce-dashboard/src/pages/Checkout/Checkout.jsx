@@ -497,6 +497,7 @@ function Checkout() {
 
               <input
                 type="tel"
+                maxLength={10}
                 placeholder="Enter your phone number"
                 value={customerPhone}
                 onChange={(e) =>

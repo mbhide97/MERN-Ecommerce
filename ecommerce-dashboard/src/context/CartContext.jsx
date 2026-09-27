@@ -1,6 +1,7 @@
  
 
 
+
 // import {
 //   createContext,
 //   useState,
@@ -33,13 +34,20 @@
 //         },
 //       });
 
-//       const cartData = response.data.cart || [];
+//       console.log("🛒 GET CART RESPONSE:", response.data);
+
+//       const cartData = response.data?.cart || [];
 
 //       setCart(cartData);
 
-//       console.log("🛒 Cart Loaded:", cartData);
+//       console.log("🛒 CART DATA:", cartData);
 //     } catch (error) {
-//       console.error("❌ Error fetching cart:", error);
+//       console.error(
+//         "❌ FETCH CART ERROR:",
+//         error.response?.data || error.message
+//       );
+
+//       setCart([]);
 //     }
 //   };
 
@@ -64,10 +72,21 @@
 //         return;
 //       }
 
+//       console.log("➕ ADD PRODUCT:", product);
+
+//       const productId =
+//         product?._id || product?.id;
+
+//       if (!productId) {
+//         console.error("❌ Product ID not found:", product);
+//         alert("Product ID not found");
+//         return;
+//       }
+
 //       const response = await API.post(
 //         "/cart",
 //         {
-//           productId: product.id,
+//           productId: productId,
 //           quantity: 1,
 //         },
 //         {
@@ -77,13 +96,19 @@
 //         }
 //       );
 
-//       console.log("✅ Product Added:", response.data);
+//       console.log(
+//         "✅ PRODUCT ADDED:",
+//         response.data
+//       );
 
 //       await fetchCart();
 
 //       alert("Product added to cart 🛒");
 //     } catch (error) {
-//       console.error("❌ Add to cart error:", error);
+//       console.error(
+//         "❌ ADD TO CART ERROR:",
+//         error.response?.data || error.message
+//       );
 
 //       alert(
 //         error.response?.data?.message ||
@@ -96,23 +121,50 @@
 //   // REMOVE PRODUCT
 //   // ==========================================
 
-//   const removeFromCart = async (id) => {
+//   const removeFromCart = async (cartId) => {
 //     try {
 //       const token = localStorage.getItem("token");
 
 //       if (!token) {
+//         alert("Please login first");
 //         return;
 //       }
 
-//       await API.delete(`/cart/${id}`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
+//       console.log(
+//         "🗑️ REMOVE CART ID:",
+//         cartId
+//       );
+
+//       if (!cartId) {
+//         console.error("❌ Cart ID missing");
+//         return;
+//       }
+
+//       const response = await API.delete(
+//         `/cart/${cartId}`,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+
+//       console.log(
+//         "✅ REMOVE RESPONSE:",
+//         response.data
+//       );
 
 //       await fetchCart();
 //     } catch (error) {
-//       console.error("❌ Remove cart error:", error);
+//       console.error(
+//         "❌ REMOVE CART ERROR:",
+//         error.response?.data || error.message
+//       );
+
+//       alert(
+//         error.response?.data?.message ||
+//           "Failed to remove product"
+//       );
 //     }
 //   };
 
@@ -120,16 +172,27 @@
 //   // INCREASE QUANTITY
 //   // ==========================================
 
-//   const increaseQuantity = async (id) => {
+//   const increaseQuantity = async (cartId) => {
 //     try {
 //       const token = localStorage.getItem("token");
 
 //       if (!token) {
+//         alert("Please login first");
 //         return;
 //       }
 
-//       await API.put(
-//         `/cart/increase/${id}`,
+//       console.log(
+//         "➕ INCREASE CART ID:",
+//         cartId
+//       );
+
+//       if (!cartId) {
+//         console.error("❌ Cart ID missing");
+//         return;
+//       }
+
+//       const response = await API.put(
+//         `/cart/increase/${cartId}`,
 //         {},
 //         {
 //           headers: {
@@ -138,11 +201,21 @@
 //         }
 //       );
 
+//       console.log(
+//         "✅ INCREASE RESPONSE:",
+//         response.data
+//       );
+
 //       await fetchCart();
 //     } catch (error) {
 //       console.error(
-//         "❌ Increase quantity error:",
-//         error
+//         "❌ INCREASE QUANTITY ERROR:",
+//         error.response?.data || error.message
+//       );
+
+//       alert(
+//         error.response?.data?.message ||
+//           "Failed to increase quantity"
 //       );
 //     }
 //   };
@@ -151,16 +224,27 @@
 //   // DECREASE QUANTITY
 //   // ==========================================
 
-//   const decreaseQuantity = async (id) => {
+//   const decreaseQuantity = async (cartId) => {
 //     try {
 //       const token = localStorage.getItem("token");
 
 //       if (!token) {
+//         alert("Please login first");
 //         return;
 //       }
 
-//       await API.put(
-//         `/cart/decrease/${id}`,
+//       console.log(
+//         "➖ DECREASE CART ID:",
+//         cartId
+//       );
+
+//       if (!cartId) {
+//         console.error("❌ Cart ID missing");
+//         return;
+//       }
+
+//       const response = await API.put(
+//         `/cart/decrease/${cartId}`,
 //         {},
 //         {
 //           headers: {
@@ -169,11 +253,21 @@
 //         }
 //       );
 
+//       console.log(
+//         "✅ DECREASE RESPONSE:",
+//         response.data
+//       );
+
 //       await fetchCart();
 //     } catch (error) {
 //       console.error(
-//         "❌ Decrease quantity error:",
-//         error
+//         "❌ DECREASE QUANTITY ERROR:",
+//         error.response?.data || error.message
+//       );
+
+//       alert(
+//         error.response?.data?.message ||
+//           "Failed to decrease quantity"
 //       );
 //     }
 //   };
@@ -187,20 +281,36 @@
 //       const token = localStorage.getItem("token");
 
 //       if (!token) {
+//         alert("Please login first");
 //         return;
 //       }
 
-//       await API.delete("/cart", {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
+//       const response = await API.delete(
+//         "/cart",
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+
+//       console.log(
+//         "✅ CLEAR CART RESPONSE:",
+//         response.data
+//       );
 
 //       setCart([]);
 //     } catch (error) {
-//       console.error("❌ Clear cart error:", error);
+//       console.error(
+//         "❌ CLEAR CART ERROR:",
+//         error.response?.data || error.message
+//       );
 //     }
 //   };
+
+//   // ==========================================
+//   // CONTEXT
+//   // ==========================================
 
 //   return (
 //     <CartContext.Provider
@@ -220,10 +330,7 @@
 // }
 
 // export default CartProvider;
-
-
-
-
+ 
 import {
   createContext,
   useState,
@@ -236,6 +343,7 @@ export const CartContext = createContext();
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [cartLoading, setCartLoading] = useState(true);
 
   // ==========================================
   // GET CART FROM DATABASE
@@ -245,8 +353,11 @@ function CartProvider({ children }) {
     try {
       const token = localStorage.getItem("token");
 
+      console.log("🔑 TOKEN:", token ? "Token Found" : "No Token");
+
       if (!token) {
         setCart([]);
+        setCartLoading(false);
         return;
       }
 
@@ -262,23 +373,31 @@ function CartProvider({ children }) {
 
       setCart(cartData);
 
-      console.log("🛒 CART DATA:", cartData);
+      console.log("🛒 CART LOADED:", cartData);
     } catch (error) {
       console.error(
         "❌ FETCH CART ERROR:",
         error.response?.data || error.message
       );
 
-      setCart([]);
+      // Important:
+      // API error आला म्हणून लगेच cart empty करू नका
+      // त्यामुळे reload वर existing cart गायब होणार नाही
+    } finally {
+      setCartLoading(false);
     }
   };
 
   // ==========================================
-  // LOAD CART
+  // LOAD CART AFTER APP LOAD
   // ==========================================
 
   useEffect(() => {
-    fetchCart();
+    const loadCart = async () => {
+      await fetchCart();
+    };
+
+    loadCart();
   }, []);
 
   // ==========================================
@@ -300,7 +419,11 @@ function CartProvider({ children }) {
         product?._id || product?.id;
 
       if (!productId) {
-        console.error("❌ Product ID not found:", product);
+        console.error(
+          "❌ Product ID not found:",
+          product
+        );
+
         alert("Product ID not found");
         return;
       }
@@ -323,6 +446,7 @@ function CartProvider({ children }) {
         response.data
       );
 
+      // Database मधून latest cart आणा
       await fetchCart();
 
       alert("Product added to cart 🛒");
@@ -351,11 +475,6 @@ function CartProvider({ children }) {
         alert("Please login first");
         return;
       }
-
-      console.log(
-        "🗑️ REMOVE CART ID:",
-        cartId
-      );
 
       if (!cartId) {
         console.error("❌ Cart ID missing");
@@ -403,11 +522,6 @@ function CartProvider({ children }) {
         return;
       }
 
-      console.log(
-        "➕ INCREASE CART ID:",
-        cartId
-      );
-
       if (!cartId) {
         console.error("❌ Cart ID missing");
         return;
@@ -454,11 +568,6 @@ function CartProvider({ children }) {
         alert("Please login first");
         return;
       }
-
-      console.log(
-        "➖ DECREASE CART ID:",
-        cartId
-      );
 
       if (!cartId) {
         console.error("❌ Cart ID missing");
@@ -538,6 +647,7 @@ function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cart,
+        cartLoading,
         addToCart,
         removeFromCart,
         increaseQuantity,
@@ -552,4 +662,4 @@ function CartProvider({ children }) {
 }
 
 export default CartProvider;
- 
+
