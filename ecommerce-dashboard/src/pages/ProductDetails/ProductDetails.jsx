@@ -1,263 +1,5 @@
  
-
-
-// import { useEffect, useState, useContext } from "react";
-// import { useParams, useNavigate } from "react-router-dom";
-// import {
-//   FaStar,
-//   FaHeart,
-//   FaShoppingCart,
-// } from "react-icons/fa";
-
-// import API from "../../services/api";
-// import { CartContext } from "../../context/CartContext";
-// import { WishlistContext } from "../../context/WishlistContext";
-// import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
-
-// import "./ProductDetails.css";
-
-// function ProductDetails() {
-
-//   const { id } = useParams();
-
-//   const navigate = useNavigate();
-
-//   const { addToCart } = useContext(CartContext);
-
-//   const {
-//     wishlist,
-//     addToWishlist,
-//     removeFromWishlist,
-//   } = useContext(WishlistContext);
-
-//   const [product, setProduct] = useState(null);
-
-//   const [loading, setLoading] = useState(true);
-
-//   const [quantity, setQuantity] = useState(1);
-
-//   useEffect(() => {
-
-//     API.get(`/products/${id}`)
-//       .then((res) => {
-
-//         setProduct({
-
-//           id: res.data.id,
-
-//           title: res.data.title,
-
-//           name: res.data.title,
-
-//           image: res.data.image,
-
-//           description: res.data.description,
-
-//           category: res.data.category,
-
-//           rating: res.data.rating.rate,
-
-//           price: Math.round(res.data.price * 85),
-
-//           oldPrice: Math.round(res.data.price * 100),
-
-//         });
-
-//         setLoading(false);
-
-//       })
-//       .catch((err) => {
-
-//         console.log(err);
-
-//         setLoading(false);
-
-//       });
-
-//   }, [id]);
-
-//   if (loading) {
-
-//     return <h2>Loading...</h2>;
-
-//   }
-
-//   if (!product) {
-
-//     return <h2>Product Not Found</h2>;
-
-//   }
-
-//   const isWishlist = wishlist.find(
-//     (item) => item.id === product.id
-//   );
-
-//   return (
-
-//     <section className="details-page">
-
-//       <div className="details-container">
-
-//         {/* IMAGE */}
-
-//         <div className="details-image">
-
-//           <img
-//             src={product.image}
-//             alt={product.title}
-//           />
-
-//         </div>
-
-//         {/* INFO */}
-
-//         <div className="details-info">
-
-//           <span className="category">
-//             {product.category}
-//           </span>
-
-//           <h1>{product.title}</h1>
-
-//           <div className="rating">
-
-//             <FaStar />
-//             <FaStar />
-//             <FaStar />
-//             <FaStar />
-//             <FaStar />
-
-//             <span>
-//               ({product.rating})
-//             </span>
-
-//           </div>
-
-//           <div className="price">
-
-//             <span className="new-price">
-//               ₹{product.price}
-//             </span>
-
-//             <span className="old-price">
-//               ₹{product.oldPrice}
-//             </span>
-
-//           </div>
-
-//           <p className="description">
-//             {product.description}
-//           </p>
-
-//           {/* QUANTITY */}
-
-//           <div className="quantity">
-
-//             <button
-//               onClick={() =>
-//                 quantity > 1 &&
-//                 setQuantity(quantity - 1)
-//               }
-//             >
-//               -
-//             </button>
-
-//             <span>{quantity}</span>
-
-//             <button
-//               onClick={() =>
-//                 setQuantity(quantity + 1)
-//               }
-//             >
-//               +
-//             </button>
-
-//           </div>
-
-//           {/* ADD TO CART */}
-
-//           <button
-//             className="cart-btn"
-//             onClick={() =>
-//               addToCart({
-//                 ...product,
-//                 quantity,
-//               })
-//             }
-//           >
-
-//             <FaShoppingCart />
-
-//             Add To Cart
-
-//           </button>
-
-//           {/* BUY NOW */}
-
-//           <button
-//             className="buy-btn"
-//             onClick={() =>
-//               navigate("/checkout", {
-//                 state: {
-//                   product,
-//                   quantity,
-//                 },
-//               })
-//             }
-//           >
-
-//             Buy Now
-
-//           </button>
-
-//           {/* WISHLIST */}
-
-//           <button
-//             className="wish-btn"
-//             onClick={() => {
-
-//               if (isWishlist) {
-
-//                 removeFromWishlist(product.id);
-
-//               } else {
-
-//                 addToWishlist(product);
-
-//               }
-
-//             }}
-//           >
-
-//             <FaHeart />
-
-//             {isWishlist
-//               ? " Remove Wishlist"
-//               : " Add Wishlist"}
-
-//           </button>
-
-//         </div>
-
-//       </div>
-
-//       {/* RELATED PRODUCTS */}
-
-//       <RelatedProducts
-//         category={product.category}
-//         currentId={product.id}
-//       />
-
-//     </section>
-
-//   );
-
-// }
-
-// export default ProductDetails;
-
- 
-import {
+  import {
   useEffect,
   useState,
   useContext,
@@ -514,6 +256,13 @@ function ProductDetails() {
 
   const handleAddToCart = () => {
 
+    if (product.stock <= 0) {
+
+      alert("Product is out of stock");
+
+      return;
+    }
+
     addToCart({
       ...product,
       quantity,
@@ -528,14 +277,133 @@ function ProductDetails() {
 
   const handleBuyNow = () => {
 
-    navigate("/checkout", {
+    if (!product) {
 
-      state: {
-        product,
-        quantity,
-      },
+      alert("Product not found");
 
-    });
+      return;
+    }
+
+
+    if (product.stock <= 0) {
+
+      alert("Product is out of stock");
+
+      return;
+    }
+
+
+    /*
+      Calculate Buy Now Summary
+    */
+
+    const subtotal =
+      product.price * quantity;
+
+
+    const delivery = 0;
+
+
+    const gst =
+      Math.round(
+        subtotal * 0.18
+      );
+
+
+    const total =
+      subtotal +
+      delivery +
+      gst;
+
+
+    /*
+      Checkout ला Cart सारखा
+      product structure देत आहोत.
+
+      Checkout मध्ये:
+      item.product
+      item.quantity
+
+      हे वापरले जात असल्यामुळे
+      हा structure important आहे.
+    */
+
+    const buyNowItem = {
+
+      _id:
+        `buy-now-${product.id}`,
+
+      product: product,
+
+      quantity: quantity,
+
+    };
+
+
+    console.log(
+      "🛍️ BUY NOW PRODUCT:",
+      buyNowItem
+    );
+
+
+    console.log(
+      "💰 BUY NOW SUMMARY:",
+      {
+        subtotal,
+        delivery,
+        gst,
+        total,
+      }
+    );
+
+
+    navigate(
+      "/checkout",
+      {
+
+        state: {
+
+          /*
+            Checkout Product Summary
+          */
+
+          cart: [
+            buyNowItem
+          ],
+
+
+          /*
+            Price Summary
+          */
+
+          subtotal:
+            subtotal,
+
+          delivery:
+            delivery,
+
+          gst:
+            gst,
+
+          total:
+            total,
+
+
+          /*
+            Extra product information
+            ठेवत आहोत.
+          */
+
+          product:
+            product,
+
+          quantity:
+            quantity,
+
+        },
+
+      }
+    );
 
   };
 
@@ -707,7 +575,9 @@ function ProductDetails() {
 
               }}
             >
+
               -
+
             </button>
 
 
@@ -720,13 +590,24 @@ function ProductDetails() {
 
             <button
               type="button"
-              onClick={() =>
-                setQuantity(
-                  quantity + 1
-                )
-              }
+              onClick={() => {
+
+                if (
+                  quantity <
+                  product.stock
+                ) {
+
+                  setQuantity(
+                    quantity + 1
+                  );
+
+                }
+
+              }}
             >
+
               +
+
             </button>
 
           </div>
@@ -799,4 +680,3 @@ function ProductDetails() {
 
 
 export default ProductDetails;
- 

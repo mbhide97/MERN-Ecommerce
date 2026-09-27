@@ -1,9 +1,10 @@
  
 
-
-
 // import { useEffect, useState } from "react";
-// import { useLocation } from "react-router-dom";
+// import {
+//   useLocation,
+//   useSearchParams,
+// } from "react-router-dom";
 
 // import API from "../../services/api";
 
@@ -15,6 +16,9 @@
 // function Products() {
 //   const location = useLocation();
 
+//   const [searchParams, setSearchParams] =
+//     useSearchParams();
+
 //   // =========================
 //   // CATEGORY FROM HOME PAGE
 //   // =========================
@@ -22,8 +26,12 @@
 //   const selectedCategory =
 //     location.state?.category || "All";
 
+//   // =========================
+//   // STATES
+//   // =========================
 
-//   const [products, setProducts] = useState([]);
+//   const [products, setProducts] =
+//     useState([]);
 
 //   const [loading, setLoading] =
 //     useState(true);
@@ -32,7 +40,9 @@
 //     useState("");
 
 //   const [search, setSearch] =
-//     useState("");
+//     useState(
+//       searchParams.get("search") || ""
+//     );
 
 //   const [category, setCategory] =
 //     useState(selectedCategory);
@@ -43,6 +53,30 @@
 //   const [maxPrice, setMaxPrice] =
 //     useState(100000);
 
+//   // =========================
+//   // NAVBAR SEARCH
+//   // =========================
+
+//   useEffect(() => {
+//     const searchValue =
+//       searchParams.get("search") || "";
+
+//     setSearch(searchValue);
+//   }, [searchParams]);
+
+//   // =========================
+//   // UPDATE URL WHEN SEARCH
+//   // =========================
+
+//   useEffect(() => {
+//     if (search.trim()) {
+//       setSearchParams({
+//         search: search.trim(),
+//       });
+//     } else {
+//       setSearchParams({});
+//     }
+//   }, [search]);
 
 //   // =========================
 //   // UPDATE CATEGORY
@@ -51,10 +85,11 @@
 
 //   useEffect(() => {
 //     if (location.state?.category) {
-//       setCategory(location.state.category);
+//       setCategory(
+//         location.state.category
+//       );
 //     }
 //   }, [location.state]);
-
 
 //   // =========================
 //   // FETCH PRODUCTS
@@ -75,16 +110,10 @@
 //           response.data
 //         );
 
-
-//         // Backend response handle
-
 //         const productData =
 //           Array.isArray(response.data)
 //             ? response.data
 //             : response.data.products || [];
-
-
-//         // Format products
 
 //         const data =
 //           productData.map((item) => ({
@@ -123,11 +152,9 @@
 //               0,
 //           }));
 
-
 //         setProducts(data);
 
 //       } catch (err) {
-
 //         console.error(
 //           "Products Fetch Error:",
 //           err
@@ -139,16 +166,12 @@
 //         );
 
 //       } finally {
-
 //         setLoading(false);
-
 //       }
 //     };
 
 //     fetchProducts();
-
 //   }, []);
-
 
 //   // =========================
 //   // FILTER + SEARCH + SORT
@@ -158,8 +181,6 @@
 //     products
 //       .filter((item) => {
 
-//         // Search
-
 //         const matchSearch =
 //           item.name
 //             .toLowerCase()
@@ -167,55 +188,36 @@
 //               search.toLowerCase()
 //             );
 
-
-//         // Category
-
 //         const matchCategory =
 //           category === "All" ||
 //           item.category === category;
 
-
-//         // Price
-
 //         const matchPrice =
 //           item.price <= maxPrice;
-
 
 //         return (
 //           matchSearch &&
 //           matchCategory &&
 //           matchPrice
 //         );
-
 //       })
 
 //       .sort((a, b) => {
-
-//         // Low → High
 
 //         if (sort === "low") {
 //           return a.price - b.price;
 //         }
 
-
-//         // High → Low
-
 //         if (sort === "high") {
 //           return b.price - a.price;
 //         }
-
-
-//         // Rating
 
 //         if (sort === "rating") {
 //           return b.rating - a.rating;
 //         }
 
-
 //         return 0;
-
 //       });
-
 
 //   // =========================
 //   // LOADING
@@ -229,7 +231,6 @@
 //     );
 //   }
 
-
 //   // =========================
 //   // ERROR
 //   // =========================
@@ -241,7 +242,6 @@
 //       </h2>
 //     );
 //   }
-
 
 //   // =========================
 //   // UI
@@ -255,7 +255,6 @@
 //           ? "Our Products"
 //           : `${category} Products`}
 //       </h2>
-
 
 //       {/* FILTER */}
 
@@ -272,7 +271,6 @@
 //         maxPrice={maxPrice}
 //         setMaxPrice={setMaxPrice}
 //       />
-
 
 //       {/* PRODUCTS */}
 
@@ -301,8 +299,9 @@
 //   );
 // }
 
-// export default Product
+// export default Products;
 
+ 
 import { useEffect, useState } from "react";
 import {
   useLocation,
@@ -353,8 +352,12 @@ function Products() {
   const [sort, setSort] =
     useState("default");
 
+  // =========================
+  // MAX PRICE
+  // =========================
+
   const [maxPrice, setMaxPrice] =
-    useState(100000);
+    useState(5000);
 
   // =========================
   // NAVBAR SEARCH
@@ -379,7 +382,7 @@ function Products() {
     } else {
       setSearchParams({});
     }
-  }, [search]);
+  }, [search, setSearchParams]);
 
   // =========================
   // UPDATE CATEGORY
@@ -402,7 +405,6 @@ function Products() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-
         setError("");
 
         const response =
@@ -416,7 +418,7 @@ function Products() {
         const productData =
           Array.isArray(response.data)
             ? response.data
-            : response.data.products || [];
+            : response.data?.products || [];
 
         const data =
           productData.map((item) => ({
@@ -435,8 +437,7 @@ function Products() {
               "",
 
             price:
-              Number(item.price) ||
-              0,
+              Number(item.price) || 0,
 
             oldPrice:
               Number(item.oldPrice) ||
@@ -449,11 +450,17 @@ function Products() {
 
             rating:
               Number(item.rating) ||
-              Number(
-                item.rating?.rate
-              ) ||
+              Number(item.rating?.rate) ||
               0,
+
+            stock:
+              Number(item.stock) || 0,
           }));
+
+        console.log(
+          "Formatted Products:",
+          data
+        );
 
         setProducts(data);
 
@@ -484,6 +491,7 @@ function Products() {
     products
       .filter((item) => {
 
+        // SEARCH FILTER
         const matchSearch =
           item.name
             .toLowerCase()
@@ -491,12 +499,20 @@ function Products() {
               search.toLowerCase()
             );
 
+        // CATEGORY FILTER
         const matchCategory =
           category === "All" ||
           item.category === category;
 
+        // PRICE FILTER
+        const productPrice =
+          Number(item.price);
+
+        const selectedMaxPrice =
+          Number(maxPrice);
+
         const matchPrice =
-          item.price <= maxPrice;
+          productPrice <= selectedMaxPrice;
 
         return (
           matchSearch &&
@@ -505,18 +521,31 @@ function Products() {
         );
       })
 
+      // =========================
+      // SORT
+      // =========================
+
       .sort((a, b) => {
 
         if (sort === "low") {
-          return a.price - b.price;
+          return (
+            Number(a.price) -
+            Number(b.price)
+          );
         }
 
         if (sort === "high") {
-          return b.price - a.price;
+          return (
+            Number(b.price) -
+            Number(a.price)
+          );
         }
 
         if (sort === "rating") {
-          return b.rating - a.rating;
+          return (
+            Number(b.rating) -
+            Number(a.rating)
+          );
         }
 
         return 0;
@@ -552,6 +581,8 @@ function Products() {
 
   return (
     <section className="products-page">
+
+      {/* PAGE TITLE */}
 
       <h2 className="page-title">
         {category === "All"
@@ -603,4 +634,3 @@ function Products() {
 }
 
 export default Products;
-
