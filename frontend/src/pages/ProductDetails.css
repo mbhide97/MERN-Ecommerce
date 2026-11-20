@@ -1,0 +1,185 @@
+.container {
+  min-height: 100vh;
+  padding: 50px 30px;
+  background-color: #f8f9fa;
+}
+
+/* Page Title */
+
+.container > h1 {
+  text-align: center;
+  color: #333;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+/* Product Card */
+
+.product-card {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  background-color: #ffffff;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 40px;
+
+  padding: 40px;
+
+  border-radius: 15px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image */
+
+.product-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fafafa;
+
+  border-radius: 12px;
+
+  padding: 20px;
+}
+
+.product-img img {
+  width: 100%;
+  max-width: 450px;
+
+  height: 450px;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+}
+
+/* Product Information */
+
+.product-info {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.product-info h1 {
+  color: #333;
+
+  font-size: 34px;
+
+  margin-bottom: 20px;
+}
+
+.product-info p {
+  color: #666;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  margin-bottom: 20px;
+}
+
+.product-info h3 {
+  color: #ff6b00;
+
+  font-size: 30px;
+
+  margin-bottom: 25px;
+}
+
+/* Add To Cart */
+
+.product-info button {
+  width: 200px;
+
+  padding: 13px 20px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background-color: #ff6b00;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.product-info button:hover {
+  background-color: #e85d00;
+
+  transform: translateY(-2px);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .product-card {
+    grid-template-columns: 1fr;
+
+    max-width: 700px;
+
+    padding: 30px;
+  }
+
+  .product-img img {
+    height: 350px;
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 30px 15px;
+  }
+
+  .container > h1 {
+    font-size: 28px;
+
+    margin-bottom: 30px;
+  }
+
+  .product-card {
+    padding: 20px;
+
+    gap: 25px;
+  }
+
+  .product-img img {
+    height: 280px;
+  }
+
+  .product-info h1 {
+    font-size: 26px;
+  }
+
+  .product-info p {
+    font-size: 15px;
+  }
+
+  .product-info h3 {
+    font-size: 26px;
+  }
+
+  .product-info button {
+    width: 100%;
+  }
+
+}

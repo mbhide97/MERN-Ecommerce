@@ -1,0 +1,115 @@
+ .register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  background-color: #f8f9fa;
+}
+
+/* Register Box */
+.register-box {
+  width: 100%;
+  max-width: 430px;
+  background-color: #ffffff;
+  padding: 40px 35px;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.register-title {
+  text-align: center;
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+/* Form */
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.register-form label {
+  color: #333;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Inputs */
+.register-form input {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+/* Input Focus */
+.register-form input:focus {
+  border-color: #ff6b00;
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+}
+
+/* Placeholder */
+.register-form input::placeholder {
+  color: #999;
+}
+
+/* Register Button */
+.register-button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff6b00;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Button Hover */
+.register-button:hover {
+  background-color: #e85d00;
+  transform: translateY(-2px);
+}
+
+/* Button Active */
+.register-button:active {
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+
+  .register-container {
+    padding: 20px 15px;
+  }
+
+  .register-box {
+    padding: 30px 20px;
+  }
+
+  .register-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .register-form input {
+    padding: 12px;
+  }
+
+  .register-button {
+    padding: 12px;
+  }
+}

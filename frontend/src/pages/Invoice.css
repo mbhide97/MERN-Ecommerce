@@ -1,0 +1,292 @@
+
+/* Main Invoice Page */
+.invoice-page {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #252525;
+}
+
+/* Download Button */
+.invoice-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.invoice-actions button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 13px 24px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.invoice-actions button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Invoice Container */
+.invoice-container {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Invoice Header */
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #2563eb;
+  padding-bottom: 20px;
+}
+
+.invoice-header h1 {
+  color: #2563eb;
+  font-size: 32px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.invoice-header p {
+  color: #777;
+  margin-top: 8px;
+}
+
+.invoice-title {
+  text-align: right;
+}
+
+.invoice-title h2 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #222;
+  margin: 0;
+}
+
+.invoice-title p {
+  color: #777;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* Customer & Invoice Information */
+.invoice-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 35px 0;
+}
+
+.invoice-info div {
+  flex: 1;
+  min-width: 0;
+}
+
+.invoice-info h3,
+.invoice-products-title {
+  color: #2563eb;
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.invoice-info p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Product Table */
+.invoice-products-title {
+  margin-top: 30px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+}
+
+.invoice-table th {
+  background: #2563eb;
+  color: white;
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.invoice-table td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #444;
+}
+
+.invoice-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+/* Total Section */
+.invoice-total {
+  width: 300px;
+  max-width: 100%;
+  margin: 30px 0 0 auto;
+  text-align: right;
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.invoice-total p {
+  margin: 12px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.invoice-total h2 {
+  color: #2563eb;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  margin-bottom: 0;
+  font-size: 23px;
+}
+
+/* Footer */
+.invoice-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 22px;
+  border-top: 1px solid #ddd;
+}
+
+.invoice-footer h3 {
+  color: #2563eb;
+  font-size: 20px;
+}
+
+.invoice-footer p {
+  color: #777;
+  font-size: 14px;
+}
+
+/* Loading */
+.invoice-loading {
+  text-align: center;
+  margin: 50px auto;
+  color: #2563eb;
+}
+
+/* Tablet & Mobile Responsive */
+@media (max-width: 768px) {
+  .invoice-page {
+    padding: 12px;
+    margin: 20px auto;
+  }
+
+  .invoice-container {
+    padding: 20px;
+  }
+
+  .invoice-info {
+    gap: 15px;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 9px 6px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .invoice-header,
+  .invoice-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .invoice-title {
+    text-align: left;
+  }
+
+  .invoice-header h1 {
+    font-size: 27px;
+  }
+
+  .invoice-title h2 {
+    font-size: 23px;
+  }
+
+  .invoice-container {
+    padding: 14px;
+  }
+
+  .invoice-table {
+    table-layout: fixed;
+  }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 8px 4px;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+
+  .invoice-total {
+    width: auto;
+  }
+
+  .invoice-actions button {
+    width: 100%;
+  }
+}
+
+/* Print / Save as PDF */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  .invoice-actions {
+    display: none !important;
+  }
+
+  .invoice-page {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .invoice-container {
+    border: none;
+    box-shadow: none;
+    padding: 10px;
+    border-radius: 0;
+  }
+
+  .invoice-table tr {
+    break-inside: avoid;
+  }
+
+  .invoice-footer {
+    break-inside: avoid;
+  }
+}
