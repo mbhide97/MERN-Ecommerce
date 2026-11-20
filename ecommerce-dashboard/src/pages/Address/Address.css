@@ -1,0 +1,460 @@
+/* =====================================
+        ADDRESS PAGE
+===================================== */
+
+.address-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f5f7fb;
+}
+
+.address-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =====================================
+        HEADER
+===================================== */
+
+.address-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.address-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.address-header h1 svg {
+  color: #ff7a00;
+}
+
+.address-header p {
+  color: #777;
+}
+
+/* =====================================
+        ADD BUTTON
+===================================== */
+
+.add-address-btn {
+  border: none;
+  background: #ff7a00;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-address-btn:hover {
+  background: #e96c00;
+  transform: translateY(-2px);
+}
+
+/* =====================================
+        FORM CARD
+===================================== */
+
+.address-form-card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.address-form-card h2 {
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* =====================================
+        FORM ROW
+===================================== */
+
+.address-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* =====================================
+        FORM FIELD
+===================================== */
+
+.address-field {
+  margin-bottom: 20px;
+}
+
+.address-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.address-field input,
+.address-field textarea,
+.address-field select {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 13px 14px;
+  font-size: 15px;
+  outline: none;
+  background: white;
+  transition: 0.3s;
+}
+
+.address-field textarea {
+  resize: vertical;
+}
+
+.address-field input:focus,
+.address-field textarea:focus,
+.address-field select:focus {
+  border-color: #ff7a00;
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+}
+
+/* =====================================
+        FORM BUTTONS
+===================================== */
+
+.address-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.save-address-btn,
+.cancel-address-btn {
+  border: none;
+  padding: 12px 22px;
+  border-radius: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-address-btn {
+  background: #ff7a00;
+  color: white;
+}
+
+.save-address-btn:hover {
+  background: #e96c00;
+}
+
+.cancel-address-btn {
+  background: #eee;
+  color: #333;
+}
+
+.cancel-address-btn:hover {
+  background: #ddd;
+}
+
+/* =====================================
+        ADDRESS LIST
+===================================== */
+
+.address-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+/* =====================================
+        ADDRESS CARD
+===================================== */
+
+.address-card {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid #eee;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.address-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff7a00;
+  box-shadow: 0 12px 28px rgba(255, 122, 0, 0.12);
+}
+
+/* =====================================
+        CARD HEADER
+===================================== */
+
+.address-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.address-card-header > svg {
+  color: #ff7a00;
+  font-size: 22px;
+}
+
+.address-type {
+  display: inline-block;
+  background: #fff2e6;
+  color: #ff7a00;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =====================================
+        DEFAULT BADGE
+===================================== */
+
+.default-badge {
+  display: inline-block;
+  margin-left: 8px;
+  background: #dcfce7;
+  color: #15803d;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =====================================
+        ADDRESS CONTENT
+===================================== */
+
+.address-card h3 {
+  font-size: 19px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.address-card p {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 5px;
+}
+
+/* =====================================
+        ACTIONS
+===================================== */
+
+.address-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #eee;
+}
+
+.address-actions button {
+  border: none;
+  padding: 9px 13px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Default */
+
+.default-btn {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.default-btn:hover {
+  background: #ffedd5;
+}
+
+/* Edit */
+
+.edit-address-btn {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.edit-address-btn:hover {
+  background: #dbeafe;
+}
+
+/* Delete */
+
+.delete-address-btn {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.delete-address-btn:hover {
+  background: #fee2e2;
+}
+
+/* =====================================
+        NO ADDRESS
+===================================== */
+
+.no-address {
+  grid-column: 1 / -1;
+  background: white;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 18px;
+}
+
+.no-address svg {
+  font-size: 55px;
+  color: #ff7a00;
+  margin-bottom: 15px;
+}
+
+.no-address h2 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.no-address p {
+  color: #777;
+}
+
+/* =====================================
+        RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+
+  .address-page {
+    padding: 25px 15px;
+  }
+
+  .address-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-address-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .address-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .address-list {
+    grid-template-columns: 1fr;
+  }
+
+  .address-form-card {
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .address-header h1 {
+    font-size: 25px;
+  }
+
+  .address-card {
+    padding: 20px;
+  }
+
+  .address-form-actions {
+    flex-direction: column;
+  }
+
+  .save-address-btn,
+  .cancel-address-btn {
+    width: 100%;
+  }
+
+  .address-actions button {
+    flex: 1;
+    justify-content: center;
+  }
+
+}
+/* =====================================
+      ADDRESS INPUT COLOR FIX
+===================================== */
+
+.address-field input,
+.address-field textarea,
+.address-field select {
+  color: #222 !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #222 !important;
+  opacity: 1 !important;
+}
+
+/* Placeholder */
+
+.address-field input::placeholder,
+.address-field textarea::placeholder {
+  color: #777 !important;
+  opacity: 1 !important;
+}
+
+/* Select */
+
+.address-field select {
+  color: #222 !important;
+  background-color: #fff !important;
+  cursor: pointer;
+}
+
+/* Select options */
+
+.address-field select option {
+  color: #222 !important;
+  background-color: #fff !important;
+}
+
+/* Focus */
+
+.address-field input:focus,
+.address-field textarea:focus,
+.address-field select:focus {
+  color: #222 !important;
+  background-color: #fff !important;
+  border-color: #ff7a00 !important;
+  outline: none;
+}
+
+/* Autofill fix */
+
+.address-field input:-webkit-autofill,
+.address-field input:-webkit-autofill:hover,
+.address-field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #222 !important;
+  background-color: #fff !important;
+}

@@ -1,0 +1,663 @@
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar-custom {
+  width: 100%;
+  min-height: 70px;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  color: #111827;
+  text-decoration: none;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.logo:hover {
+  color: #2563eb;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+  flex: 1;
+  max-width: 400px;
+
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  /* No white background */
+  background: transparent;
+
+  box-sizing: border-box;
+}
+
+.search-box svg {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.search-box input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #111827;
+
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #6b7280;
+}
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+}
+
+.nav-links a {
+  color: #374151;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+}
+
+.nav-links a.active {
+  color: #2563eb;
+}
+
+/* =========================
+   ICONS
+========================= */
+
+.wishlist-icon,
+.cart-icon {
+  font-size: 18px;
+}
+
+.orders-link,
+.profile-link {
+  font-size: 15px;
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.badge {
+  position: absolute;
+
+  top: -10px;
+  right: -12px;
+
+  min-width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 4px;
+
+  background: #dc2626;
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.mode-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #d1d5db;
+  background: transparent;
+
+  color: #222222;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
+
+.mode-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
+
+  line-height: 1;
+}
+
+.mode-text {
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1;
+}
+
+.mode-btn:hover {
+  color: #2563eb;
+
+  border-color: #2563eb;
+
+  background: rgba(37, 99, 235, 0.06);
+}
+
+/* =========================
+   MOBILE MENU ICON
+========================= */
+
+.menu-icon {
+  display: none;
+
+  font-size: 25px;
+
+  color: #111827;
+
+  cursor: pointer;
+}
+
+/* =========================
+   MOBILE SEARCH
+========================= */
+
+.mobile-search {
+  display: none;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .navbar-custom {
+    padding: 0 20px;
+    gap: 15px;
+  }
+
+  .search-box {
+    max-width: 280px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .orders-link span,
+  .profile-link span {
+    display: none;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar-custom {
+    min-height: 65px;
+
+    padding: 0 18px;
+
+    justify-content: space-between;
+
+    position: sticky;
+  }
+
+  /* =========================
+     LOGO
+  ========================= */
+
+  .logo {
+    font-size: 21px;
+  }
+
+  /* =========================
+     DESKTOP SEARCH HIDE
+  ========================= */
+
+  .desktop-search {
+    display: none;
+  }
+
+  /* =========================
+     HAMBURGER
+  ========================= */
+
+  .menu-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+
+    z-index: 1100;
+  }
+
+  /* =========================
+     MOBILE NAVIGATION
+  ========================= */
+
+  .nav-links {
+    position: absolute;
+
+    top: 65px;
+    left: 0;
+
+    width: 100%;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 10px 0;
+
+    background: #ffffff;
+
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+    box-sizing: border-box;
+  }
+
+  /* =========================
+     OPEN MENU
+  ========================= */
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* =========================
+     MOBILE SEARCH
+  ========================= */
+
+  .mobile-search {
+    display: flex;
+
+    width: calc(100% - 40px);
+
+    max-width: none;
+
+    height: 44px;
+
+    margin: 5px 20px 15px;
+
+    flex: none;
+
+    background: transparent;
+  }
+
+  .mobile-search input {
+    min-width: 0;
+
+    flex: 1;
+
+    background: transparent;
+  }
+
+  .mobile-search button {
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+  }
+
+  .mobile-search button:hover {
+    background: #1d4ed8;
+  }
+
+  /* =========================
+     MOBILE LINKS
+  ========================= */
+
+  .nav-links a {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 0 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    box-sizing: border-box;
+  }
+
+  .nav-links a:hover {
+    background: #f3f4f6;
+  }
+
+  /* =========================
+     ORDERS / PROFILE
+  ========================= */
+
+  .orders-link span,
+  .profile-link span {
+    display: inline;
+  }
+
+  /* =========================
+     WISHLIST / CART
+  ========================= */
+
+  .wishlist-icon,
+  .cart-icon {
+    font-size: 16px;
+  }
+
+  /* =========================
+     BADGE
+  ========================= */
+
+  .badge {
+    position: static;
+
+    margin-left: 4px;
+  }
+
+  /* =========================
+     THEME
+  ========================= */
+
+  .mode-btn {
+    width: 100%;
+
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    text-align: left;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 0;
+
+    background: transparent;
+  }
+
+  .mode-btn:hover {
+    transform: none;
+
+    background: #f3f4f6;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .navbar-custom {
+    padding: 0 14px;
+  }
+
+  .logo {
+    font-size: 19px;
+  }
+
+  .menu-icon {
+    font-size: 23px;
+  }
+
+  .mobile-search {
+    width: calc(100% - 28px);
+
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+body.dark .navbar-custom {
+  background: #111827;
+
+  border-bottom: 1px solid #374151;
+}
+
+/* =========================
+   DARK LOGO
+========================= */
+
+body.dark .logo {
+  color: #ffffff;
+}
+
+body.dark .logo:hover {
+  color: #ff7a00;
+}
+
+/* =========================
+   DARK SEARCH
+========================= */
+
+body.dark .search-box {
+  background: transparent;
+
+  border-color: #4b5563;
+}
+
+body.dark .search-box svg {
+  color: #d1d5db;
+}
+
+body.dark .search-box input {
+  color: #ffffff;
+
+  background: transparent;
+}
+
+body.dark .search-box input::placeholder {
+  color: #9ca3af;
+}
+
+/* =========================
+   DARK NAVIGATION
+========================= */
+
+body.dark .nav-links a {
+  color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+  color: #ff7a00;
+}
+
+body.dark .nav-links a.active {
+  color: #ff7a00;
+}
+
+/* =========================
+   DARK MENU ICON
+========================= */
+
+body.dark .menu-icon {
+  color: #ffffff;
+}
+
+/* =========================
+   DARK MOBILE MENU
+========================= */
+
+body.dark .nav-links {
+  background: #111827;
+
+  border-top-color: #374151;
+  border-bottom-color: #374151;
+}
+
+body.dark .nav-links a:hover {
+  background: #1f2937;
+}
+
+/* =========================
+   DARK MOBILE SEARCH
+========================= */
+
+body.dark .mobile-search {
+  background: transparent;
+
+  border-color: #4b5563;
+}
+
+body.dark .mobile-search input {
+  color: #ffffff;
+
+  background: transparent;
+}
+
+body.dark .mobile-search input::placeholder {
+  color: #9ca3af;
+}
+
+/* =========================
+   DARK BADGE
+========================= */
+
+body.dark .badge {
+  background: #dc2626;
+
+  color: #ffffff;
+}
+
+/* =========================
+   DARK THEME BUTTON
+========================= */
+
+body.dark .mode-btn {
+  color: #ffffff;
+
+  border-color: transparent;
+
+  background: transparent;
+}
+
+body.dark .mode-btn:hover {
+  color: #ff7a00;
+
+  background: #1f2937;
+}
